@@ -1,0 +1,17 @@
+{
+  "users": [
+    {
+      "user_id": "",
+      "name": "",
+      "profile_picture": ""
+    }
+  ],
+  "messages": [
+    {
+      "message_id": "1",
+      "sender_id": "",
+      "message": "",
+      "timestamp": ""
+    }
+  ]
+}
