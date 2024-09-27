@@ -1,8 +1,15 @@
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import ChatRoom from '../src/pages/chatRoom';
+
 function App() {
   return (
-    <div>
-      <h1>20기 프론트엔드 파이팅!!! 디자인과 사이좋게 지내요~~~</h1>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<ChatRoom />} /> 
+        {/* 기본 경로: ChatRoom */}
+      </Routes>
+    </Router>
   );
 }
 
