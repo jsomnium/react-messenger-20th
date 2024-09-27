@@ -35,9 +35,9 @@ const NavBar: React.FC = () => {
 
             {/* 우측 아이콘 표시 */}
             <div className="flex space-x-2">
-                <img src="/assets/networkImg.svg" alt="Signal" className="w-5 h-5" />
-                <img src="/assets/wifiImg.svg" alt="WiFi" className="w-5 h-5" />
-                <img src="/assets/battery.svg" alt="Battery" className="w-5 h-5" />
+                <img src={require('../assets/networkImg.svg').default} alt="Battery" />
+                <img src={require('../assets/wifiImg.svg').default} alt="Battery" />
+                <img src={require('../assets/battery.svg').default} alt="Battery" />
             </div>
         </div>
     );
