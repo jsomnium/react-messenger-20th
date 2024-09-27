@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import NavBar from '../components/navBar';
 import DateDivider from '../components/dateDivider';
 import MyMessageBox from '../components/myMessageBox';
@@ -46,6 +46,19 @@ const ChatRoom: React.FC = () => {
         // 인풋의 value를 그대로 추적해서 inputMessage 상태에 담습니다!
     };
 
+    // 스크롤을 적용을 위한 useRef. DOM 조작에는 Ref가 제일 효율적이라고 하네요!
+    const messageScrollRef = useRef<HTMLDivElement>(null);
+
+    // 메시지 전송 시 스크롤 하단 이동
+    const scrollToBottom = () => {
+        messageScrollRef.current?.scrollIntoView({ behavior: "smooth" });
+    };
+
+    // 메시지 추가 시 (전송 시) 스크롤 하단 이동 함수 실행
+    useEffect(() => {
+        scrollToBottom();
+    }, [messages]);
+
     // Enter 키 입력 시 메시지를 상태에 추가함 (사실 전송의 기능을 수행합니다!)
     const sendMessage = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === 'Enter' && inputMessage.trim()) {
@@ -74,7 +87,7 @@ const ChatRoom: React.FC = () => {
             <ChatHeader />
 
             {/* 채팅 메세지 메인 Body */ }
-            <div className="flex-grow bg-aliceblue p-4">
+            <div className="flex-grow bg-aliceblue p-4 overflow-y-auto" style={{ maxHeight: 'calc(100vh - 160px)' }}>
                 {/* 메시지 리스트 순회하면서 각각 렌더링 */}
                 {messages.map((message) => (
                 <div key={message.messageId}>
@@ -98,6 +111,9 @@ const ChatRoom: React.FC = () => {
                     <button onClick={toggleUserId} className="bg-gray-200 p-2">
                     {userId === 1 ? "Switch to User 2" : "Switch to User 1"}
                     </button>
+
+                {/* 스크롤 하단 이동을 위한 빈 태그 '타겟 요소'. 메세지 추가시 이 요소로 스크롤이 이동됨! */}
+                <div ref={messageScrollRef} />
             </div>
 
             {/* 하단 입력 영역 */}
