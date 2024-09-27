@@ -1,12 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [],
+  content: [
+  ],
   theme: {
     extend: {
       colors: {
-        aliceblue: '#f0f8ff',
+        aliceblue: '#f0f8ff', /* 색상 커스텀 가능한듯 */
       }
-
     },
   },
   plugins: [],
