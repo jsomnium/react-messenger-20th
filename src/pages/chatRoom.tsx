@@ -63,7 +63,8 @@ const ChatRoom: React.FC = () => {
     const sendMessage = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === 'Enter' && inputMessage.trim()) {
             // 현재 시간을 타임스탬프로 저장
-            const newTimestamp = new Date().toLocaleString();
+            const now = new Date();
+            const newTimestamp = `${formatDate(now)}`;  // 날짜와 시간 저장
 
             // 입력된 메세지 기반으로 새 메세지를 생성합니다!
             const newMessage: Message = {
@@ -81,6 +82,17 @@ const ChatRoom: React.FC = () => {
         }
     };
 
+    // 이전 메시지의 날짜를 추적할 변수 (컴포넌트 외부에서 관리)
+    let previousDate = "";
+
+    // 날짜를 yyyy.MM.dd 형식으로 변환하는 함수
+    const formatDate = (date: Date) => {
+        const year = date.getFullYear();
+        const month = (date.getMonth() + 1).toString().padStart(2, '0');  // 2자리 월
+        const day = date.getDate().toString().padStart(2, '0');  // 2자리 일
+        return `${year}.${month}.${day}`;
+    };
+
     return (
         <div className="w-full h-full flex flex-col">
             <NavBar />
@@ -89,28 +101,33 @@ const ChatRoom: React.FC = () => {
             {/* 채팅 메세지 메인 Body */ }
             <div className="flex-grow bg-aliceblue p-4 overflow-y-auto" style={{ maxHeight: 'calc(100vh - 160px)' }}>
                 {/* 메시지 리스트 순회하면서 각각 렌더링 */}
-                {messages.map((message) => (
-                <div key={message.messageId}>
-                    {/* 날짜 구분자 (timestamp에서 날짜 부분만 추출되도록 일단 했습니다!) */}
-                    <DateDivider date={message.timestamp.split(' ')[0]} />
-                    
-                    {/* senderId와 userId 동일 여부에 따라 메시지 박스를 렌더링했습니다! */}
-                    {message.senderId === userId ? (
-                    <MyMessageBox message={message.message} timestamp={message.timestamp} />
-                    ) : (
-                    <OtherMessageBox message={message.message} timestamp={message.timestamp} />
-                    )}
+                {messages.map((message) => {
+                    const currentDate = message.timestamp.split(' ')[0];  // 날짜 부분만 추출
+                    const showDateDivider = currentDate !== previousDate;  // 날짜가 다르면 DateDivider 렌더링
+                    previousDate = currentDate;  // 이전 날짜 업데이트
 
-                    {/* 상대방 메시지일 때만 메시지 아래에 프로필이 렌더링 되도록 했습니다! */}
-                    {message.senderId !== userId && <ProfileButton />}
-                        
-                </div>
-                ))}
+                    return (
+                        <div key={message.messageId}>
+                            {/* 날짜 구분자 (현재 날짜와 이전 메시지 날짜가 다를 때만 렌더링) */}
+                            {showDateDivider && <DateDivider date={currentDate} />}
+
+                            {/* senderId와 userId 동일 여부에 따라 메시지 박스를 렌더링했습니다! */}
+                            {message.senderId === userId ? (
+                                <MyMessageBox message={message.message} timestamp={message.timestamp.split(' ')[1]} />
+                            ) : (
+                                <OtherMessageBox message={message.message} timestamp={message.timestamp.split(' ')[1]} />
+                            )}
+
+                            {/* 상대방 메시지일 때만 메시지 아래에 프로필이 렌더링 되도록 했습니다! */}
+                            {message.senderId !== userId && <ProfileButton />}
+                        </div>
+                    );
+                })}
 
                 {/* 임시로 유저 Id 변경 버튼을 만들었습니다! 이 기능을 다른 버튼에 넣으면 될듯합니다 */}
-                    <button onClick={toggleUserId} className="bg-gray-200 p-2">
+                <button onClick={toggleUserId} className="bg-gray-200 p-2">
                     {userId === 1 ? "Switch to User 2" : "Switch to User 1"}
-                    </button>
+                </button>
 
                 {/* 스크롤 하단 이동을 위한 빈 태그 '타겟 요소'. 메세지 추가시 이 요소로 스크롤이 이동됨! */}
                 <div ref={messageScrollRef} />
