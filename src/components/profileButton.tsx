@@ -1,7 +1,7 @@
 const profileButton: React.FC = () => {
     return (
         <div>
-            profileButton
+            *
         </div>
   );
 };
