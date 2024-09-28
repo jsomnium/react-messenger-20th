@@ -3,10 +3,10 @@ import NavBar from '../components/navBar';
 import DateDivider from '../components/dateDivider';
 import MyMessageBox from '../components/myMessageBox';
 import OtherMessageBox from '../components/otherMessageBox';
-import ProfileButton from '../components/profileButton';
 import PlusButton from '../components/plusButton';
 import ChatHeader from '../components/chatHeader';
 import messagesData from '../data/chatData.json';
+import ProfileButton from '../components/profileButton';
 
 // Message 타입 정의 : 타입 스크립트 쓰니까 편하네요!!!
 type Message = {
@@ -119,20 +119,18 @@ const ChatRoom: React.FC = () => {
                             )}
 
                             {/* 상대방 메시지일 때만 메시지 아래에 프로필이 렌더링 되도록 했습니다! */}
-                            {message.senderId !== userId && <ProfileButton />}
+                            {message.senderId !== userId && <ProfileButton toggleUserId={toggleUserId} />}
+                            
                         </div>
+                        
                     );
                 })}
-
-                {/* 임시로 유저 Id 변경 버튼을 만들었습니다! 이 기능을 다른 버튼에 넣으면 될듯합니다 */}
-                <button onClick={toggleUserId} className="bg-gray-200 p-2">
-                    {userId === 1 ? "Switch to User 2" : "Switch to User 1"}
-                </button>
 
                 {/* 스크롤 하단 이동을 위한 빈 태그 '타겟 요소'. 메세지 추가시 이 요소로 스크롤이 이동됨! */}
                 <div ref={messageScrollRef} />
             </div>
 
+            
             {/* 하단 입력 영역 */}
             <div className="h-16 flex items-center px-4">
                 {/* 좌측의 추가 버튼 */}
