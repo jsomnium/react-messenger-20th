@@ -99,36 +99,35 @@ const ChatRoom: React.FC = () => {
             <ChatHeader />
 
             {/* 채팅 메세지 메인 Body */ }
-            <div className="flex-grow bg-aliceblue p-4 overflow-y-auto" style={{ maxHeight: 'calc(100vh - 160px)' }}>
-                {/* 메시지 리스트 순회하면서 각각 렌더링 */}
-                {messages.map((message) => {
-                    const currentDate = message.timestamp.split(' ')[0];  // 날짜 부분만 추출
-                    const showDateDivider = currentDate !== previousDate;  // 날짜가 다르면 DateDivider 렌더링
-                    previousDate = currentDate;  // 이전 날짜 업데이트
+            <div className="flex-grow bg-aliceblue px-5 overflow-y-auto space-y-3" style={{ maxHeight: 'calc(100vh - 160px)' }}>
+            {/* 메시지 리스트 순회하면서 각각 렌더링 */}
+            {messages.map((message) => {
+                const currentDate = message.timestamp.split(' ')[0];  // 날짜 부분만 추출
+                const showDateDivider = currentDate !== previousDate;  // 날짜가 다르면 DateDivider 렌더링
+                previousDate = currentDate;  // 이전 날짜 업데이트
 
-                    return (
-                        <div key={message.messageId}>
-                            {/* 날짜 구분자 (현재 날짜와 이전 메시지 날짜가 다를 때만 렌더링) */}
-                            {showDateDivider && <DateDivider date={currentDate} />}
+                return (
+                    <div key={message.messageId}>
+                        {/* 날짜 구분자 (현재 날짜와 이전 메시지 날짜가 다를 때만 렌더링) */}
+                        {showDateDivider && <DateDivider date={currentDate} />}
 
-                            {/* senderId와 userId 동일 여부에 따라 메시지 박스를 렌더링했습니다! */}
-                            {message.senderId === userId ? (
-                                <MyMessageBox message={message.message} timestamp={message.timestamp.split(' ')[1]} />
-                            ) : (
-                                <OtherMessageBox message={message.message} timestamp={message.timestamp.split(' ')[1]} />
-                            )}
+                        {/* senderId와 userId 동일 여부에 따라 메시지 박스를 렌더링 */}
+                        {message.senderId === userId ? (
+                            <MyMessageBox message={message.message} timestamp={message.timestamp.split(' ')[1]} />
+                        ) : (
+                            <OtherMessageBox message={message.message} timestamp={message.timestamp.split(' ')[1]} />
+                        )}
 
-                            {/* 상대방 메시지일 때만 메시지 아래에 프로필이 렌더링 되도록 했습니다! */}
-                            {message.senderId !== userId && <ProfileButton toggleUserId={toggleUserId} />}
-                            
-                        </div>
-                        
-                    );
-                })}
-
-                {/* 스크롤 하단 이동을 위한 빈 태그 '타겟 요소'. 메세지 추가시 이 요소로 스크롤이 이동됨! */}
-                <div ref={messageScrollRef} />
+                        {/* 상대방 메시지일 때만 메시지 아래에 프로필 렌더링 */}
+                        {message.senderId !== userId && <ProfileButton toggleUserId={toggleUserId} />}
             </div>
+        );
+    })}
+
+    {/* 스크롤 하단 이동을 위한 빈 태그 '타겟 요소'. */}
+    <div ref={messageScrollRef} />
+</div>
+
 
             
             {/* 하단 입력 영역 */}

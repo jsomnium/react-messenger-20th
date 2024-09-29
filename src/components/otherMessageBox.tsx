@@ -10,9 +10,9 @@ const OtherMessageBox: React.FC<OtherMessageBoxProps> = ({ message, timestamp })
       <div className="flex items-start mb-3">
 
         {/* 메시지 박스 */}
-        <div className="bg-gray-100 p-3 rounded-lg text-left max-w-xs">
-          <p className="text-sm">{message}</p>
-          <span className="text-xs text-gray-500">{timestamp}</span>
+        <div className="bg-gray-50 p-3 rounded-tl-2xl rounded-tr-2xl rounded-br-2xl text-left max-w-xs border border-gray-200">
+          <p className="text-sm font-semibold">{message}</p>
+          <span className="text-xs text-gray-400">{timestamp}</span>
         </div>
       </div>
     );

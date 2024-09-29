@@ -27,16 +27,16 @@ const NavBar: React.FC = () => {
     }, []);
 
     return (
-        <div className="w-full flex justify-between items-center p-2">
+        <div className="w-full flex justify-between items-center px-7 py-3">
             {/* 시간 표시 */}
-            <div className="text-lg font-medium">
-                {time} 
+            <div className="text-sm font-semibold px-1 ">
+                {time}
             </div>
 
             {/* 우측 아이콘 표시 */}
             <div className="flex space-x-2">
-                <img src={require('../assets/networkImg.svg').default} alt="Battery" />
-                <img src={require('../assets/wifiImg.svg').default} alt="Battery" />
+                <img src={require('../assets/networkImg.svg').default} alt="Network" />
+                <img src={require('../assets/wifiImg.svg').default} alt="WiFi" />
                 <img src={require('../assets/battery.svg').default} alt="Battery" />
             </div>
         </div>
