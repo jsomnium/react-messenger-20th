@@ -120,18 +120,16 @@ const ChatRoom: React.FC = () => {
 
                         {/* 상대방 메시지일 때만 메시지 아래에 프로필 렌더링 */}
                         {message.senderId !== userId && <ProfileButton toggleUserId={toggleUserId} />}
+                    </div>
+                );
+            })}
+            {/* 스크롤 하단 이동을 위한 빈 태그 '타겟 요소'. */}
+            <div ref={messageScrollRef} />
             </div>
-        );
-    })}
+        
+            {/* 하단 입력 영역, 그림자가 안나타남 */}
+            <div className="z-10 flex items-center px-5 py-4 space-x-2 shadow-md bg-white">
 
-    {/* 스크롤 하단 이동을 위한 빈 태그 '타겟 요소'. */}
-    <div ref={messageScrollRef} />
-</div>
-
-
-            
-            {/* 하단 입력 영역 */}
-            <div className="h-16 flex items-center px-4">
                 {/* 좌측의 추가 버튼 */}
                 <PlusButton />
 
@@ -142,7 +140,8 @@ const ChatRoom: React.FC = () => {
                     value={inputMessage}
                     onChange={handleInputChange}  // onChange로 입력값 변경 추적
                     onKeyDown={sendMessage}  // onKeyPress가 사용이 안된다네요? 왜지
-                    className="flex-grow p-2 border rounded"
+                    className="flex w-full px-4 h-8 rounded-3xl bg-gray-100 placeholder-gray-400 placeholder:text-xs"
+                    // placeholder 사이즈 조정이 안됨 ㅠㅠ    
                 />
             </div>
         </div>
