@@ -115,13 +115,17 @@ const ChatRoom: React.FC = () => {
                         {message.senderId === userId ? (
                             <MyMessageBox message={message.message} timestamp={message.timestamp.split(' ')[1]} />
                         ) : (
-                            <OtherMessageBox message={message.message} timestamp={message.timestamp.split(' ')[1]} />
-                        )}
+                            <div className="flex items-start space-x-3">  {/* 좌측에 프로필, 우측에 메시지 박스 배치 */}
+                                {/* 상대방 메시지일 때 좌측에 프로필 렌더링 */}
+                                <ProfileButton toggleUserId={toggleUserId} />
 
-                        {/* 상대방 메시지일 때만 메시지 아래에 프로필 렌더링 */}
-                        {message.senderId !== userId && <ProfileButton toggleUserId={toggleUserId} />}
+                                {/* 메시지 박스 */}
+                                <OtherMessageBox message={message.message} timestamp={message.timestamp.split(' ')[1]} />
+                            </div>
+                        )}
                     </div>
                 );
+
             })}
             {/* 스크롤 하단 이동을 위한 빈 태그 '타겟 요소'. */}
             <div ref={messageScrollRef} />

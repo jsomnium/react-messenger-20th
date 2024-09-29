@@ -7,13 +7,19 @@ type OtherMessageBoxProps = {
 // OtherMessageBox 컴포넌트: 상대방이 보낸 메시지 표시
 const OtherMessageBox: React.FC<OtherMessageBoxProps> = ({ message, timestamp }) => {
     return (
-      <div className="flex items-start mb-3">
+      <div className="flex items-start mb-2 space-x-2">
 
         {/* 메시지 박스 */}
-        <div className="bg-gray-50 p-3 rounded-tl-2xl rounded-tr-2xl rounded-br-2xl text-left max-w-xs border border-gray-200">
-          <p className="text-sm font-semibold">{message}</p>
-          <span className="text-xs text-gray-400">{timestamp}</span>
+        <div className="max-w-[224px] bg-gray-50 py-2 px-4 rounded-tl-2xl rounded-tr-2xl rounded-br-2xl text-left border border-gray-200 break-words">
+          <p className="text-sm font-semibold">
+            {message}
+          </p>
         </div>
+
+        {/* 시간 표시 */}
+        <span className="whitespace-nowrap text-xs text-gray-400 self-end">
+          {timestamp}
+        </span>
       </div>
     );
 };
