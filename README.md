@@ -15,7 +15,7 @@
 ## Key Questions
 - React Router의 동적 라우팅(Dynamic Routing)이란 무엇이며, 언제 사용하나요?
 - SPA(Single Page Application)와 MPA(Multi Page Application)의 차이점과 각 방식의 장단점은 무엇인가요?
-- 리액트에서의 컴포넌트 상태 관리 방법(useState, useReducer)과 부모-자식 컴포넌트 간 props 전달 방식의 차이점은 무엇인가요?
+- React에서 useState와 useReducer를 활용한 지역 상태 관리와 Context API 및 전역 상태 관리 라이브러리의 차이점을 설명하세요.
 
 ## 미션 목표
 - TypeScript를 적극적으로 활용하여 코드의 타입 안정성을 확보합니다.
