@@ -14,7 +14,7 @@
 
 ## Key Questions
 - React Router의 동적 라우팅(Dynamic Routing)이란 무엇이며, 언제 사용하나요?
-- SPA(Single Page Application)와 MPA(Multi Page Application)의 차이점과 각 방식의 장단점은 무엇인가요?
+- 네트워크 속도가 느린 환경에서 사용자 경험을 개선하기 위해 사용할 수 있는 UI/UX 디자인 전략과 기술적 최적화 방법은 무엇인가요?
 - React에서 useState와 useReducer를 활용한 지역 상태 관리와 Context API 및 전역 상태 관리 라이브러리의 차이점을 설명하세요.
 
 ## 미션 목표
