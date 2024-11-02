@@ -10,7 +10,7 @@ function App() {
       <Routes>
         {/* 기본 경로: FriendListRoom => 친구 목록 */}
         <Route path="/" element={<FriendListRoom />} />
-        <Route path="/chatRoom" element={<ChatRoom />} />
+        <Route path="/chatRoom/:userId" element={<ChatRoom />} />
         <Route path="/chatListRoom" element={<ChatListRoom />} />
       </Routes>
     </Router>
