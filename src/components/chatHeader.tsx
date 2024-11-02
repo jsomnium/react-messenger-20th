@@ -1,8 +1,17 @@
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+
 const ChatHeader: React.FC = () => {
+    const navigate = useNavigate();
+
+    const handleBackClick = () => {
+        navigate('/chatListRoom'); // chatListRoom 경로로 이동
+    };
+
     return (
         <div className="h-11 flex justify-between items-center px-5 py-2">
             {/* 왼쪽 뒤로가기 버튼 */}
-            <div className="flex items-center">
+            <div className="flex items-center" onClick={handleBackClick} style={{ cursor: 'pointer' }}>
                 <img src={require('../assets/backArrowImg.svg').default} alt="backArrowImg" className="w-6 h-6" />
             </div>
 
