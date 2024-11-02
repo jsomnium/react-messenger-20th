@@ -4,7 +4,7 @@ import BottomViewList from '../components/bottomViewList';
 import ChatRoomList from '../components/chatRoomList';
 
 const ChatListRoom: React.FC = () => {
-    const userIds = [1, 3]; // 목록에 랜더링할 사용자 ID
+    const userIds = [1]; // 목록에 랜더링할 사용자 ID
 
     return (
         <div className='w-full h-full flex flex-col'>

@@ -29,7 +29,12 @@ const ChatRoom: React.FC = () => {
 
     // 컴포넌트 첫 랜더링시 JSON 데이터를 상태에 설정함
     useEffect(() => {
-        setMessages(messagesData.messages);
+        const storedMessages = localStorage.getItem('ChatData');
+        if (storedMessages) {
+            setMessages(JSON.parse(storedMessages));
+        } else {
+            setMessages(messagesData.messages); // JSON에서 초기 데이터 설정
+        }
     }, []);
 
     // 버튼 클릭 시 사용자 ID 변경
@@ -60,10 +65,9 @@ const ChatRoom: React.FC = () => {
     }, [messages]);
 
     // 로컬 스토리지에 메세지 업로드
-    const updateLocalStorage = (newMessage: Message) => {
-        localStorage.setItem('chatMessages', JSON.stringify(newMessage));
-        console.log(newMessage);
-    }
+    const updateLocalStorage = (newMessages: Message[]) => {
+        localStorage.setItem('ChatData', JSON.stringify(newMessages));
+    };
 
     // Enter 키 입력 시 메시지를 상태에 추가함 (사실 전송의 기능을 수행합니다!)
     const sendMessage = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -81,10 +85,11 @@ const ChatRoom: React.FC = () => {
             };
 
             // 기존 메시지에 새 메시지 추가
-            setMessages([...messages, newMessage]);
+            const updatedMessages = [...messages, newMessage];
+            setMessages(updatedMessages);
 
             // 메세지 업로드 -> 잘 동작을 안함.. 해결하기ㅠㅠ
-            updateLocalStorage(newMessage);
+            updateLocalStorage(updatedMessages);
 
             // 입력창 초기화.. 까먹을뻔
             setInputMessage("");
