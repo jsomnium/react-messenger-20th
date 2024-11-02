@@ -11,7 +11,7 @@ const OtherMessageBox: React.FC<OtherMessageBoxProps> = ({ message, timestamp })
 
         {/* 메시지 박스 */}
         <div className="max-w-[224px] bg-gray-50 py-2 px-4 rounded-tl-2xl rounded-tr-2xl rounded-br-2xl text-left border border-gray-200 break-words">
-          <p className="text-sm font-semibold">
+          <p className="text-sm font-semibold appleSD">
             {message}
           </p>
         </div>
