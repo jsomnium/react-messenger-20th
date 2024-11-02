@@ -1,14 +1,14 @@
 import React from 'react';
 import NavBar from '../components/navBar';
 import ViewList from '../components/viewList';
-import ChatRoomList from '../components/chatRomList';
+import ChatRoomList from '../components/chatRoomList';
 
 const ChatListRoom:React.FC = () => {
     return <div>
         <NavBar/>
 
         <div className='flex items-center space-x-48 h-14'>
-            <div className='text-xl font-semibold'>
+            <div className="text-xl font-semibold ml-5">
                 채팅
             </div>
             <div className='flex justify-center space-x-4'>
