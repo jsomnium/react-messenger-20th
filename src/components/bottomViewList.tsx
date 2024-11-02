@@ -1,6 +1,7 @@
-const ViewList: React.FC = () => {
+const BottomViewList: React.FC = () => {
     return (
-        <div className="flex justify-center space-x-7">
+        <div className="w-full h-20 flex justify-center items-center space-x-7 pb-6">
+            {/* 상단 그림자 추가 하기*/}
             <img src={require('../assets/friendIcon.svg').default} alt="Friend" />
             <img src={require('../assets/chatIcon.svg').default} alt="ChatRoom" />
             <img src={require('../assets/openChatIcon.svg').default} alt="OpenChat" />
@@ -9,4 +10,4 @@ const ViewList: React.FC = () => {
     );
 };
 
-export default ViewList;
+export default BottomViewList;
