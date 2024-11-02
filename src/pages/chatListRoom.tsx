@@ -3,7 +3,7 @@ import NavBar from '../components/navBar';
 import ViewList from '../components/viewList';
 import ChatRoomList from '../components/chatRomList';
 
-const ChatList:React.FC = () => {
+const ChatListRoom:React.FC = () => {
     return <div>
         <NavBar/>
 
@@ -18,11 +18,9 @@ const ChatList:React.FC = () => {
             </div>
         </div>
 
-        <div> {/*채팅목록 컴포넌트*/}
-            <ChatRoomList/>
-        </div>
+        <ChatRoomList/>
 
         <ViewList/>
     </div>
 }
-export default ChatList;
+export default ChatListRoom;

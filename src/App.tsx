@@ -1,16 +1,16 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import ChatRoom from '../src/pages/chatRoom';
-import ChatList from '../src/pages/chatList';
-import FriendList from './pages/friendList';
+import ChatListRoom from './pages/chatListRoom';
+import FriendListRoom from './pages/friendListRoom';
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<ChatRoom />} />
-        <Route path="/chatList" element={<ChatList />} />
-        <Route path="/friendList" element={<FriendList />} />
+        <Route path="/chatListRoom" element={<ChatListRoom />} />
+        <Route path="/friendListRoom" element={<FriendListRoom />} />
         {/* 기본 경로: ChatRoom */}
       </Routes>
     </Router>

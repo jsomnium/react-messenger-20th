@@ -59,6 +59,12 @@ const ChatRoom: React.FC = () => {
         scrollToBottom();
     }, [messages]);
 
+    // 로컬 스토리지에 메세지 업로드
+    const updateLocalStorage = (newMessage: Message) => {
+        localStorage.setItem('chatMessages', JSON.stringify(newMessage));
+        console.log(newMessage);
+    }
+
     // Enter 키 입력 시 메시지를 상태에 추가함 (사실 전송의 기능을 수행합니다!)
     const sendMessage = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === 'Enter' && inputMessage.trim()) {
@@ -76,6 +82,9 @@ const ChatRoom: React.FC = () => {
 
             // 기존 메시지에 새 메시지 추가
             setMessages([...messages, newMessage]);
+
+            // 메세지 업로드 -> 잘 동작을 안함.. 해결하기ㅠㅠ
+            updateLocalStorage(newMessage);
 
             // 입력창 초기화.. 까먹을뻔
             setInputMessage("");
