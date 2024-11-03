@@ -64,8 +64,8 @@ const FriendListRoom: React.FC = () => {
 
                 {/* 생일인 친구 */}
                 {birthdayFriends.length > 0 && ( // 생일인 친구가 있을 경우에만 렌더링
-                    <div className="mt-4 border-b border-gray-100">
-                        <div className="text-gray-500 mb-2 text-xs">생일인 친구</div>
+                    <div className="mt-3 border-b border-gray-100 pb-2">
+                        <div className="text-gray-500 mb-1 text-xs">생일인 친구</div>
                         {birthdayFriends.map(friend => (
                             <div key={friend.id} className="flex items-center justify-between py-2">
                                 <div className="flex items-center">
@@ -79,7 +79,7 @@ const FriendListRoom: React.FC = () => {
                 )}
 
                 {/* 친구 목록 */}
-                <div className="mt-4">
+                <div className="mt-2">
                     <div className="text-gray-500 mb-2 text-xs">친구 {friends.length}</div>
                     {friends.map(friend => (
                         <div key={friend.id} className="flex items-center py-2">

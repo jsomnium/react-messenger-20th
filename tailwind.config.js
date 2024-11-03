@@ -8,7 +8,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        appleSD: ['Apple SD Gothic Neo', 'sans-serif'],
+        appleSD: ['AppleSDGothicNeo', 'sans-serif'],
       },
       colors: {
         mainYellow: 'rgba(239, 213, 70, 1)',
